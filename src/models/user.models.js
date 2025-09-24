@@ -9,7 +9,7 @@ const userSchema = new Schema({
         unique: true,
         lowercase: true,
         trim: true,
-        index: true
+        index: true,
     },
     email: {
         type: String,
@@ -42,7 +42,7 @@ const userSchema = new Schema({
         required: [true, 'Password is required']
     },
     refreshToken: {
-        tupe: String,
+        type: String,
     }
 }, {timestamps: true})
 
@@ -74,6 +74,8 @@ userSchema.methods.generateAccessToken = function(){
         }
     )
 }
+
+
 userSchema.methods.generateRefreshToken = function(){
     return jwt.sign(
         {
